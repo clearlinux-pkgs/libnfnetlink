@@ -4,7 +4,7 @@
 #
 Name     : libnfnetlink
 Version  : 1.0.1
-Release  : 4
+Release  : 5
 URL      : http://ftp.netfilter.org/pub/libnfnetlink/libnfnetlink-1.0.1.tar.bz2
 Source0  : http://ftp.netfilter.org/pub/libnfnetlink/libnfnetlink-1.0.1.tar.bz2
 Summary  : Low-level netfilter netlink communication library
