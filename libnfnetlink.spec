@@ -4,7 +4,7 @@
 #
 Name     : libnfnetlink
 Version  : 1.0.1
-Release  : 7
+Release  : 8
 URL      : http://ftp.netfilter.org/pub/libnfnetlink/libnfnetlink-1.0.1.tar.bz2
 Source0  : http://ftp.netfilter.org/pub/libnfnetlink/libnfnetlink-1.0.1.tar.bz2
 Summary  : Low-level netfilter netlink communication library
@@ -21,6 +21,7 @@ libnfnetlink - userspace library for handling of netfilter netlink messages
 Summary: dev components for the libnfnetlink package.
 Group: Development
 Requires: libnfnetlink-lib
+Provides: libnfnetlink-devel
 
 %description dev
 dev components for the libnfnetlink package.
@@ -38,11 +39,16 @@ lib components for the libnfnetlink package.
 %setup -q -n libnfnetlink-1.0.1
 
 %build
+export LANG=C
 %configure --disable-static
-make V=1 %{?_smp_mflags}
+make V=1  %{?_smp_mflags}
 
 %check
-make V=1 %{?_smp_mflags} check
+export LANG=C
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost
+make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
 rm -rf %{buildroot}
@@ -56,9 +62,10 @@ rm -rf %{buildroot}
 /usr/include/libnfnetlink/libnfnetlink.h
 /usr/include/libnfnetlink/linux_nfnetlink.h
 /usr/include/libnfnetlink/linux_nfnetlink_compat.h
-/usr/lib64/*.so
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/libnfnetlink.so
+/usr/lib64/pkgconfig/libnfnetlink.pc
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/*.so.*
+/usr/lib64/libnfnetlink.so.0
+/usr/lib64/libnfnetlink.so.0.2.0
