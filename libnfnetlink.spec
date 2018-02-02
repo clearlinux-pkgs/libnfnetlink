@@ -6,7 +6,7 @@
 #
 Name     : libnfnetlink
 Version  : 1.0.1
-Release  : 11
+Release  : 12
 URL      : https://www.netfilter.org/projects/libnfnetlink/files/libnfnetlink-1.0.1.tar.bz2
 Source0  : https://www.netfilter.org/projects/libnfnetlink/files/libnfnetlink-1.0.1.tar.bz2
 Source99 : https://www.netfilter.org/projects/libnfnetlink/files/libnfnetlink-1.0.1.tar.bz2.sig
