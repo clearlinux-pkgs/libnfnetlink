@@ -6,10 +6,10 @@
 #
 Name     : libnfnetlink
 Version  : 1.0.1
-Release  : 15
+Release  : 16
 URL      : https://www.netfilter.org/projects/libnfnetlink/files/libnfnetlink-1.0.1.tar.bz2
 Source0  : https://www.netfilter.org/projects/libnfnetlink/files/libnfnetlink-1.0.1.tar.bz2
-Source1 : https://www.netfilter.org/projects/libnfnetlink/files/libnfnetlink-1.0.1.tar.bz2.sig
+Source1  : https://www.netfilter.org/projects/libnfnetlink/files/libnfnetlink-1.0.1.tar.bz2.sig
 Summary  : Low-level netfilter netlink communication library
 Group    : Development/Tools
 License  : GPL-2.0
@@ -75,6 +75,7 @@ license components for the libnfnetlink package.
 
 %prep
 %setup -q -n libnfnetlink-1.0.1
+cd %{_builddir}/libnfnetlink-1.0.1
 pushd ..
 cp -a libnfnetlink-1.0.1 build32
 popd
@@ -84,14 +85,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569529850
+export SOURCE_DATE_EPOCH=1604442315
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
 %configure --disable-static
 make  %{?_smp_mflags}
@@ -110,15 +111,15 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 cd ../build32;
-make VERBOSE=1 V=1 %{?_smp_mflags} check || :
+make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1569529850
+export SOURCE_DATE_EPOCH=1604442315
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libnfnetlink
-cp COPYING %{buildroot}/usr/share/package-licenses/libnfnetlink/COPYING
+cp %{_builddir}/libnfnetlink-1.0.1/COPYING %{buildroot}/usr/share/package-licenses/libnfnetlink/075d599585584bb0e4b526f5c40cb6b17e0da35a
 pushd ../build32/
 %make_install32
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
@@ -159,4 +160,4 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/libnfnetlink/COPYING
+/usr/share/package-licenses/libnfnetlink/075d599585584bb0e4b526f5c40cb6b17e0da35a
