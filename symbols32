@@ -1,3 +1,4 @@
+libnfnetlink.so.0:NFNETLINK_1.0.1
 libnfnetlink.so.0:nfnl_addattr16
 libnfnetlink.so.0:nfnl_addattr32
 libnfnetlink.so.0:nfnl_addattr8
@@ -47,11 +48,3 @@ libnfnetlink.so.0:nlif_get_ifflags
 libnfnetlink.so.0:nlif_index2name
 libnfnetlink.so.0:nlif_open
 libnfnetlink.so.0:nlif_query
-libnfnetlink.so.0:rtnl_close
-libnfnetlink.so.0:rtnl_dump_type
-libnfnetlink.so.0:rtnl_handler_register
-libnfnetlink.so.0:rtnl_handler_unregister
-libnfnetlink.so.0:rtnl_open
-libnfnetlink.so.0:rtnl_parse_rtattr
-libnfnetlink.so.0:rtnl_receive
-libnfnetlink.so.0:rtnl_receive_multi
